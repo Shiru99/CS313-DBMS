@@ -1,7 +1,0 @@
-package Home;
-
-public class GradeReport {
-	 public void  GradeReport() {
-		
-	}
-}
