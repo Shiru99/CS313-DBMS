@@ -1,0 +1,7 @@
+$ sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main"
+$ wget -q -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install postgresql-9.6 postgresql-contrib
+$ sudo apt-get install postgresql-9.6 postgresql-client-9.6
+$ sudo -u postgres psql
+$ sudo -u postgres psql postgres
