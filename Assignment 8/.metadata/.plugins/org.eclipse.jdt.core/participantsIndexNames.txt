@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+/home/shiru/V Sem/DBMS/Lab/Assignment 8/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4155957635.index
+/Lab0/src
+/home/shiru/V Sem/DBMS/Lab/Assignment 8/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4055537533.index
+/Lab8/src

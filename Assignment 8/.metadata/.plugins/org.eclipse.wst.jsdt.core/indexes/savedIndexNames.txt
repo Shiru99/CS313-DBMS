@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/shiru/V Sem/DBMS/Lab/Assignment 8/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1655552225.index
+1285948159.index
+33561679.index
+1819685075.index
+2423169220.index
+265387191.index
+589789597.index
