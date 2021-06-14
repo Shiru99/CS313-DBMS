@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+/home/shiru/V Sem/DBMS/Lab/Home Assignment/.metadata/.plugins/org.eclipse.jdt.core
+3157256911.index
+2033228442.index
+1200551507.index
+623327960.index

@@ -1,0 +1,142 @@
+package Home;
+
+import java.io.*;
+import java.sql.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		String dbURL = "jdbc:postgresql://localhost:5432/university";
+		String user = "postgres";
+		String pass = "#######";
+
+		try (Connection connection = DriverManager.getConnection(dbURL, user, pass))
+		{
+			System.out.println("Connected to PostgreSQL database!");
+
+			try  
+			{
+//				DELETE FROM takes WHERE course_id='303';
+//				DELETE FROM course WHERE course_id='303';
+//				DELETE FROM section WHERE course_id='303';
+
+
+				String SQLfile = "/home/shiru/V Sem/DBMS/Lab/Home Assignment/insertValues.sql";
+
+				Runtime.getRuntime().exec("psql -f '" + SQLfile + "'");
+
+				System.out.println("SQL file Loaded Successfully !");
+
+			} 
+			catch (IOException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
+			GradeReport GR = new GradeReport(connection);
+
+			
+//			String csvFile = "/home/shiru/V Sem/DBMS/Lab/Home Assignment/grdreport.csv";
+//
+//			BufferedReader csvLine = new BufferedReader(new FileReader(csvFile));
+//			
+//			String rowOFcsv = null;
+//			int addedStudent = 0, passedStudent = 0;
+//
+//			while ((rowOFcsv = csvLine.readLine()) != null) 
+//			{
+//				String data[] = rowOFcsv.split(",");
+//				String id = data[0];
+//				String course_id = data[1];
+//				String grade = data[5];
+//
+//				addedStudent += 1;
+//				
+//				String query1 = "SELECT COUNT(*) FROM course WHERE course_id = ?";
+//				PreparedStatement checkingCourse = connection.prepareStatement(query1);
+//				checkingCourse.setString(1, course_id);
+//				
+//				ResultSet countCourse = checkingCourse.executeQuery();
+//				countCourse.next();
+//				
+//				if (countCourse.getInt("count") != 0) 
+//				{
+//					String query2 = "SELECT COUNT(*) FROM takes WHERE id = ?";
+//					PreparedStatement checkingStudent = connection.prepareStatement(query2);
+//					checkingStudent.setString(1, id);
+//					ResultSet countStudent = checkingStudent.executeQuery();
+//					countStudent.next();
+//					
+//					if (countStudent.getInt("count") != 0) 
+//					{
+//						String query3 = "UPDATE takes SET grade = ? WHERE id = ?";
+//						PreparedStatement updateGrade = connection.prepareStatement(query3);
+//						updateGrade.setString(1, grade);
+//						updateGrade.setString(2, id);
+//						updateGrade.executeUpdate();
+//
+//						if (!grade.equals("F")) 
+//						{
+//							passedStudent += 1;
+//
+//							String query5 = "SELECT credits FROM course WHERE course_id = ?";
+//							PreparedStatement getCredits = connection.prepareStatement(query5);
+//							getCredits.setString(1, course_id);
+//							ResultSet noOfCredits = getCredits.executeQuery();
+//							noOfCredits.next();
+//							
+//
+//							String query6 = "SELECT tot_cred FROM student WHERE id = ?";
+//							PreparedStatement getTotalStudentCredits = connection.prepareStatement(query6);
+//							getTotalStudentCredits.setString(1, id);
+//							ResultSet totalCreditsRow = getTotalStudentCredits.executeQuery();
+//							totalCreditsRow.next();
+//							
+//							int creditsToUpdate = totalCreditsRow.getInt("tot_cred")
+//									+ Integer.parseInt(noOfCredits.getString("credits"));
+//							
+//
+//							// UPDATE tot_cred
+//							String query4 = "UPDATE student SET tot_cred = ? WHERE id = ?";
+//							PreparedStatement updateTotalStudentCredits = connection.prepareStatement(query4);
+//							
+//							updateTotalStudentCredits.setInt(1, creditsToUpdate);
+//							updateTotalStudentCredits.setString(2, id);
+//							updateTotalStudentCredits.executeUpdate();
+//						}
+//					}
+//					else 
+//					{
+//						System.out.println("Student doesn't exist with id : " + id);
+//					}
+//				} 
+//				else 
+//				{
+//					System.out.println("There doesn't exist course with course_id : " + course_id);
+//				}
+//			}
+//
+//			csvLine.close();
+//
+//			System.out.println("No. of students in the grade report : " + addedStudent);
+//			System.out.println("No. of students that have passed : " + passedStudent);
+//			System.out.println("No. of students with FF grade : " + (addedStudent - passedStudent));
+
+			connection.close();
+
+		} catch (SQLException e) {
+			System.out.println("Connection failure.");
+
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
