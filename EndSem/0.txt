@@ -1,0 +1,66 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+Generally to make databases efficient we like like to eliminate redundant data and to ensure data dependencies make sense. 
+Normalization is the process of efficiently organizing our data in the database.  Normalization reduces the amount of space a database consumes and ensures that data is logically stored in the database. Some of the goals are: 
+1. Be able to characterize the level of redundancy in a relational schema
+2. Provide mechanisms for transforming schemas in order to remove redundancy
+
+
+
+v) 
+
+redundant makes databases less efficient, to to make databases efficient & ensure data dependencies make sense. 
+
+Normalization makes efficient organizing of database. Normalization removes extra space used by database and stores logically.
+
+Some of the benefits: 
+1. transforms schema in order to remove redundancy
+2. characterizes the level of redundancy in a relational schema
+
+Goal of normalization is to remove various anomalies that can cause issues during data updation/ insertion. there are 3 normal forms which have different rules that ensure anomalies are minimised in the database. It makes database more efficient.
+
+Yes, section is in proper normal form. All attributes are atomic, thus in 1st NF. There is no partial dependency, so in 2NF as well. There is no functional dependency as well, thus also in 3NF.
