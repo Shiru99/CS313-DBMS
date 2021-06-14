@@ -1,0 +1,46 @@
+
+
+/**
+ * @author shiru
+ *
+ */
+
+import java.sql.*;
+
+public class Lab6 {
+	public static void main(String[] args) {
+
+		String dbURL = "jdbc:postgresql://localhost:5432/university";
+		String user = "postgres";
+		String pass = "#######";
+
+		try (Connection connection = DriverManager.getConnection(dbURL,user,pass)) 
+		{
+//			System.out.println("Connected to PostgreSQL database!");
+			
+			Statement statement = connection.createStatement();
+			
+//			Select student.ID, student.name, takes.grade, takes.course_id
+//			FROM student,takes
+//			WHERE student.ID=takes.ID AND takes.semester='Fall' AND takes.year= 2009 AND takes.grade='A+';
+
+			String query = "Select student.ID, student.name, takes.grade, takes.course_id"+
+							"FROM student,takes"+
+							"WHERE student.ID=takes.ID AND takes.semester='Fall' AND takes.year= 2009 AND takes.grade='A+'";
+
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while (resultSet.next())
+			{
+				System.out.printf("%s %s\n", resultSet.getString("id"), resultSet.getString("name"));
+			}
+			
+		} 
+		catch (SQLException e)
+		{
+			System.out.println("Connection failure.");
+			
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,27 @@
+
+
+import java.sql.*;
+
+public class PreparedSqlInsert {
+	public static void main(String[] args) {
+		
+		try (Connection connection =
+		DriverManager.getConnection("jdbc:postgresql://localhost:5432/university", "postgres",
+		"crocroaz!")) {
+			System.out.println("Java JDBC PostgreSQL Example");
+			System.out.println("Connected to PostgreSQL database!");
+			Statement statement = connection.createStatement();
+//			System.out.println("Reading student records...");
+			PreparedStatement smt = connection.prepareStatement("UPDATE instructor SET dept_name = ? WHERE name = ?");
+			smt.setString(1, "Math");
+			smt.setString(2, "Levine");
+			
+			int count = smt.executeUpdate();
+			System.out.println(count + " record updated");
+			
+		} catch (SQLException e) {
+			System.out.println("Connection failure.");
+			e.printStackTrace();
+		}
+	}
+}

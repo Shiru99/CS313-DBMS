@@ -1,0 +1,45 @@
+/**
+ * @author shiru
+ *
+ */
+
+import java.sql.*;
+
+public class Lab6Q2 {
+	public static void main(String[] args) {
+
+		String dbURL = "jdbc:postgresql://localhost:5432/university";
+		String user = "postgres";
+		String pass = "#######";
+		
+		try (Connection connection = DriverManager.getConnection(dbURL,user,pass)) 
+		{
+//			System.out.println("Connected to PostgreSQL database!");
+			
+			PreparedStatement statement = connection.prepareStatement("insert into instructor values(?, ?, ?, ?)");
+			statement.setInt(1, 55555);
+			statement.setString(2, "WhiteHatJr");
+			statement.setString(3, "Comp. Sci.");
+			statement.setInt(4, 20000000);
+			
+			int count = statement.executeUpdate();
+			System.out.println(count + " records inserted");
+			
+
+//			System.out.println(query);
+//			ResultSet resultSet = statement.executeQuery(query);
+//			
+//			while (resultSet.next())
+//			{
+//				System.out.printf("%s %s %s %s \n", resultSet.getString("id"), resultSet.getString("name"), resultSet.getString("grade"), resultSet.getString("course_id"));
+//			}
+			
+		} 
+		catch (SQLException e)
+		{
+			System.out.println("Connection failure.");
+			
+			e.printStackTrace();
+		}
+	}
+}

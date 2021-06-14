@@ -1,0 +1,41 @@
+
+
+import java.sql.*;
+
+public class Temp {
+	public static void main(String[] args) {
+		try (Connection connection =
+			DriverManager.getConnection("jdbc:postgresql://localhost:5432/university", "universitydb0017",
+			"password")) {
+			System.out.println("Java JDBC PostgreSQL Example");
+			System.out.println("Connected to PostgreSQL database!");
+			
+			PreparedStatement smt = connection.prepareStatement("insert into instructor values(?, ?, ?, ?)");
+			smt.setInt(1, 20943);
+			smt.setString(2, "MyName");
+			smt.setString(3, "Comp. Sci.");
+			smt.setInt(4, 200000);
+			
+			int count = smt.executeUpdate();
+			System.out.println(count + " records inserted");
+			
+//			Statement statement = connection.createStatement();
+//			System.out.println("Reading student records...");
+//			System.out.printf("%s %s %s %s", "id", "name", "takes", "grade");
+////			ResultSet resultSet = statement.executeQuery("SELECT * FROM student");
+////			ResultSet resultSet = statement.executeQuery("SELECT student.ID, student.name, takes.grade, takes.course_id FROM student, takes where student.ID = takes.id and takes.grade = 'A+' and takes.semester = 'Fall' and takes.year = '2009'");
+//			ResultSet resultSet = statement.executeQuery(arg0)
+//			
+//			while (resultSet.next()) {
+//				System.out.printf("%s %s %s %s\n", resultSet.getString("id"), resultSet.getString("name"), resultSet.getString("grade"), resultSet.getString("course_id"));
+//			}
+		} catch (SQLException e) {
+			System.out.println("Connection failure.");
+			e.printStackTrace();
+		}
+	}
+}
+
+//public class DBConnect {
+//
+//}

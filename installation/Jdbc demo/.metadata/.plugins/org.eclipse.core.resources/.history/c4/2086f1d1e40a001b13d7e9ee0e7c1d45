@@ -1,0 +1,47 @@
+
+
+
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+
+public class Temp 
+{
+	public static void main(String[] args) 
+	{
+		String dbURL = "jdbc:postgresql://localhost:5432/university";
+		String user = "postgres";
+		String pass = "#######";
+
+		String fail = "sorry! Connection failure occured.";
+		String Sucsesfull = "process successful";
+		
+		try(Connection connection = DriverManager.getConnection(dbURL,user,pass)) 
+		{
+			Statement statement = connection.createStatement();
+
+			String s1 = "SELECT student.ID,  takes.course_id, takes.grade, student.name";
+			String s2 = " FROM student,takes";
+			String s3 = " WHERE takes.semester='Fall' AND student.ID=takes.ID";
+			String s4 = " AND takes.grade='A+' AND takes.year= 2009 ";
+
+			String query = s1  + s2 + s3 + s4;
+					
+
+			System.out.println(query);
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while(resultSet.next())
+			{
+				System.out.printf("%s %s %s %s \n", resultSet.getString("id"), resultSet.getString("name"), resultSet.getString("grade"), resultSet.getString("course_id"));
+				System.out.println(Sucsesfull);
+			}
+			
+		} 
+		catch(SQLException e)
+		{
+			System.out.println(fail);
+			e.printStackTrace();
+		}
+	}
+}
