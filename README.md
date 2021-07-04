@@ -16,13 +16,6 @@ $ sudo apt install postgresql postgresql-contrib
 ```
 ---
 
-***POSTGRESQL JDBC Installation***
-```
-$ sudo apt-get update
- 
-$ sudo apt install postgresql postgresql-contrib
-```
----
 
 ***Use Default User-psql***
 ```
@@ -40,8 +33,8 @@ postgres=# CREATE ROLE universitydb0015 WITH PASSWORD '123';
 
 postgres=# ALTER ROLE  "universitydb0015" WITH LOGIN;
 
-// after this create university db
 
+// for existing university db
 
 $ psql -U universitydb0015 -h localhost -p 5432 -d university;
 
